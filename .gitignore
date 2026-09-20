@@ -1,11 +1,4 @@
-node_modules
-dist
-.data
-.nitro
-.cache
-.output
+# deps
+node_modules/
 .env
-.env.local
-!.vscode/
-!.vscode/settings.json
-!.vscode/extensions.json
+.data

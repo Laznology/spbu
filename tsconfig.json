@@ -1,8 +1,15 @@
 {
-  "extends": ["nitro/tsconfig"],
   "compilerOptions": {
-    "paths": {
-      "~/*": ["./*"]
-    }
+    "lib": ["ESNext"],
+    "module": "Preserve",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "types": ["bun"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx"
   }
 }
