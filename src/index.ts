@@ -3,6 +3,7 @@ import { toJsonSchema } from "@valibot/to-json-schema";
 import { Hono } from "hono";
 import { logger } from "hono/logger";
 import { openAPIRouteHandler } from "hono-openapi";
+import { startJobs } from "./jobs";
 import { apiKeyAuth } from "./middleware/api-key";
 import { fuelRoutes } from "./routes/fuels";
 import { priceRoutes } from "./routes/prices";
@@ -37,6 +38,8 @@ const routes = app
   .route("/fuels", fuelRoutes)
   .route("/prices", priceRoutes)
   .route("/regions", regionRoutes);
+
+startJobs();
 
 app.get(
   "/openapi",
