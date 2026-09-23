@@ -27,7 +27,7 @@ export const fuels = sqliteTable(
 );
 
 export const fuelPriceHistory = sqliteTable(
-  "fuel",
+  "fuel_price_histories",
   {
     createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
     effectiveAt: integer("effective_at").notNull(),
@@ -50,5 +50,13 @@ export const fuelPriceHistory = sqliteTable(
   ]
 );
 
+export const syncState = sqliteTable("sync_states", {
+  key: text("key").primaryKey(),
+  lastEffectiveAt: integer("last_effective_at"),
+  lastMessage: text("last_message"),
+  lastStatus: integer("last_status").notNull().default(0),
+  lastSyncedAt: text("last_synced_at").default(sql`(CURRENT_TIMESTAMP)`),
+  totalEvaluated: integer("total_evaluated").notNull().default(0),
+});
 export type Fuel = typeof fuels.$inferSelect;
 export type Region = typeof regions.$inferSelect;

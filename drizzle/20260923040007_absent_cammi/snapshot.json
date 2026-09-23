@@ -1,0 +1,334 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "d8c33703-d85f-4dc4-86c8-002c663d21d5",
+  "prevIds": ["a1f9cd12-4d46-419d-84da-227bc9714667"],
+  "ddl": [
+    {
+      "name": "fuel_price_histories",
+      "entityType": "tables"
+    },
+    {
+      "name": "fuels",
+      "entityType": "tables"
+    },
+    {
+      "name": "regions",
+      "entityType": "tables"
+    },
+    {
+      "name": "sync_states",
+      "entityType": "tables"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": "(CURRENT_TIMESTAMP)",
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "fuel_price_histories"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "effective_at",
+      "entityType": "columns",
+      "table": "fuel_price_histories"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "fuel_id",
+      "entityType": "columns",
+      "table": "fuel_price_histories"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "fuel_price_histories"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "price",
+      "entityType": "columns",
+      "table": "fuel_price_histories"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "region_id",
+      "entityType": "columns",
+      "table": "fuel_price_histories"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "fuels"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "false",
+      "generated": null,
+      "name": "is_subsidized",
+      "entityType": "columns",
+      "table": "fuels"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "fuels"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "provider_id",
+      "entityType": "columns",
+      "table": "fuels"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "regions"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "false",
+      "generated": null,
+      "name": "is_ftz",
+      "entityType": "columns",
+      "table": "regions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "regions"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "key",
+      "entityType": "columns",
+      "table": "sync_states"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "last_effective_at",
+      "entityType": "columns",
+      "table": "sync_states"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "last_message",
+      "entityType": "columns",
+      "table": "sync_states"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "last_status",
+      "entityType": "columns",
+      "table": "sync_states"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": "(CURRENT_TIMESTAMP)",
+      "generated": null,
+      "name": "last_synced_at",
+      "entityType": "columns",
+      "table": "sync_states"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "total_evaluated",
+      "entityType": "columns",
+      "table": "sync_states"
+    },
+    {
+      "columns": ["fuel_id"],
+      "tableTo": "fuels",
+      "columnsTo": ["id"],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_fuel_fuel_id_fuels_id_fk",
+      "entityType": "fks",
+      "table": "fuel_price_histories"
+    },
+    {
+      "columns": ["region_id"],
+      "tableTo": "regions",
+      "columnsTo": ["id"],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_fuel_region_id_regions_id_fk",
+      "entityType": "fks",
+      "table": "fuel_price_histories"
+    },
+    {
+      "columns": ["id"],
+      "nameExplicit": false,
+      "name": "fuel_pk",
+      "table": "fuel_price_histories",
+      "entityType": "pks"
+    },
+    {
+      "columns": ["id"],
+      "nameExplicit": false,
+      "name": "fuels_pk",
+      "table": "fuels",
+      "entityType": "pks"
+    },
+    {
+      "columns": ["id"],
+      "nameExplicit": false,
+      "name": "regions_pk",
+      "table": "regions",
+      "entityType": "pks"
+    },
+    {
+      "columns": ["key"],
+      "nameExplicit": false,
+      "name": "sync_states_pk",
+      "table": "sync_states",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        {
+          "value": "fuel_id",
+          "isExpression": false
+        },
+        {
+          "value": "region_id",
+          "isExpression": false
+        },
+        {
+          "value": "effective_at",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "unique_price_snapshot_idx",
+      "entityType": "indexes",
+      "table": "fuel_price_histories"
+    },
+    {
+      "columns": [
+        {
+          "value": "region_id",
+          "isExpression": false
+        },
+        {
+          "value": "fuel_id",
+          "isExpression": false
+        },
+        {
+          "value": "effective_at",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "lookup_region_fuel_idx",
+      "entityType": "indexes",
+      "table": "fuel_price_histories"
+    },
+    {
+      "columns": [
+        {
+          "value": "provider_id",
+          "isExpression": false
+        },
+        {
+          "value": "name",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "fuel_provider_name_idx",
+      "entityType": "indexes",
+      "table": "fuels"
+    },
+    {
+      "columns": ["name"],
+      "nameExplicit": false,
+      "name": "fuels_name_unique",
+      "entityType": "uniques",
+      "table": "fuels"
+    }
+  ],
+  "renames": ["fuel->fuel_price_histories"]
+}
