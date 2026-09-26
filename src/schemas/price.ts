@@ -34,6 +34,7 @@ export const PricesResponseSchema = v.object({
 export const LatestPriceQuerySchema = v.object({
   fuelId: v.optional(v.string()),
   regionId: v.optional(v.string()),
+  subsidizedOnly: v.optional(v.boolean(), false)
 });
 
 export const PriceHistoryQuerySchema = v.object({

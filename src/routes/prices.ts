@@ -137,7 +137,7 @@ export const priceRoutes = new Hono()
     }),
     vValidator("query", LatestPriceQuerySchema),
     async (c) => {
-      const { fuelId, regionId } = c.req.valid("query");
+      const { fuelId, regionId, subsidizedOnly } = c.req.valid("query");
       const conditions: SQL[] = [
         sql`${fuelPriceHistory.id} IN (SELECT MAX(id) FROM ${fuelPriceHistory} GROUP BY fuel_id, region_id)`,
       ];
@@ -147,6 +147,7 @@ export const priceRoutes = new Hono()
       if (fuelId) {
         conditions.push(eq(fuelPriceHistory.fuelId, fuelId));
       }
+      if(subsidizedOnly !== undefined) conditions.push(eq(fuels.isSubsidized, subsidizedOnly))
 
       const records = await db
         .select({
