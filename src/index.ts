@@ -21,6 +21,7 @@ import {
   RegionSchema,
   RegionsResponseSchema,
 } from "./schemas";
+import { backupRoutes } from "./routes/backup";
 
 function toModel(schema: Parameters<typeof toJsonSchema>[0]) {
   const { $schema: _, ...clean } = toJsonSchema(schema);
@@ -34,6 +35,7 @@ app.use("/api/*", apiKeyAuth());
 
 const routes = app
   .basePath("/api")
+  .route("/backup", backupRoutes)
   .route("/sync", syncRoutes)
   .route("/fuels", fuelRoutes)
   .route("/prices", priceRoutes)

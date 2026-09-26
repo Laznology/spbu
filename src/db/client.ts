@@ -6,5 +6,5 @@ import { drizzle } from "drizzle-orm/bun-sqlite";
 const url = process.env.DATABASE_URL || ".data/sqlite.db";
 mkdirSync(dirname(url), { recursive: true });
 
-const sqlite = new Database(url);
+export const sqlite = new Database(url);
 export const db = drizzle({ client: sqlite });
